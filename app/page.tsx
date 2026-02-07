@@ -15,7 +15,6 @@ export default function Home() {
     description: `Pintores profesionales con más de ${BUSINESS_INFO.yearsExperience} años de experiencia familiar. Especialistas en pintura residencial, comercial, fachadas y murales.`,
     image: `${process.env.NEXT_PUBLIC_SITE_URL}/images/logo.jpg`,
     telephone: BUSINESS_INFO.phone,
-    email: BUSINESS_INFO.email,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Buenos Aires',

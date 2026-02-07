@@ -3,7 +3,6 @@ export const BUSINESS_INFO = {
   name: 'Matías y Emiliano Pintores',
   tagline: 'Pintores Profesionales de Tercera Generación',
   phone: '+54 9 11 6020-0138',
-  email: 'contacto@pinturaprofesional.com', // TODO: Reemplazar con email real
   whatsappNumber: '5491160200138', // Número de WhatsApp (sin el + ni espacios)
   coverageArea: 'Buenos Aires y alrededores',
   yearsExperience: 25,

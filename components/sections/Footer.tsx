@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Container } from '@/components/ui/Container';
-import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO, WHATSAPP_MESSAGES } from '@/lib/constants';
 
 export const Footer: React.FC = () => {
@@ -10,10 +10,6 @@ export const Footer: React.FC = () => {
 
   const handlePhoneClick = () => {
     window.location.href = `tel:${BUSINESS_INFO.phone}`;
-  };
-
-  const handleEmailClick = () => {
-    window.location.href = `mailto:${BUSINESS_INFO.email}`;
   };
 
   const handleWhatsAppClick = () => {
@@ -47,14 +43,6 @@ export const Footer: React.FC = () => {
               >
                 <Phone className="w-5 h-5 mr-3 text-secondary" />
                 <span>{BUSINESS_INFO.phone}</span>
-              </button>
-
-              <button
-                onClick={handleEmailClick}
-                className="flex items-center text-light-dark hover:text-white transition-colors w-full text-left"
-              >
-                <Mail className="w-5 h-5 mr-3 text-secondary" />
-                <span>{BUSINESS_INFO.email}</span>
               </button>
 
               <div className="flex items-center text-light-dark">
