@@ -6,7 +6,7 @@ export const BUSINESS_INFO = {
   email: 'contacto@pinturaprofesional.com', // TODO: Reemplazar con email real
   whatsappNumber: '5491160200138', // Número de WhatsApp (sin el + ni espacios)
   coverageArea: 'Buenos Aires y alrededores',
-  yearsExperience: 15,
+  yearsExperience: 25,
 };
 
 // Mensajes predefinidos para WhatsApp según el servicio

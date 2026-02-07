@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
           ? 'bg-white shadow-lg py-4'
-          : 'bg-transparent py-6'
+          : 'bg-white/90 backdrop-blur-md shadow-sm py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,18 +66,10 @@ export const Navbar: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h1
-                className={`text-xl font-bold transition-colors ${
-                  isScrolled ? 'text-dark' : 'text-white'
-                }`}
-              >
+              <h1 className="text-xl font-bold text-dark transition-colors">
                 M&E Pintores
               </h1>
-              <p
-                className={`text-xs transition-colors ${
-                  isScrolled ? 'text-dark-lighter' : 'text-white/80'
-                }`}
-              >
+              <p className="text-xs text-dark-lighter transition-colors">
                 Tradición Familiar
               </p>
             </div>
@@ -92,9 +84,7 @@ export const Navbar: React.FC = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`font-medium transition-colors hover:text-secondary ${
-                  isScrolled ? 'text-dark-light' : 'text-white'
-                }`}
+                className="font-medium text-dark-light hover:text-secondary transition-colors"
               >
                 {link.label}
               </motion.a>
@@ -105,9 +95,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href={`tel:${BUSINESS_INFO.phone}`}
-              className={`flex items-center space-x-2 font-medium transition-colors ${
-                isScrolled ? 'text-dark-light hover:text-primary' : 'text-white hover:text-secondary'
-              }`}
+              className="flex items-center space-x-2 font-medium text-dark-light hover:text-primary transition-colors"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden xl:inline">{BUSINESS_INFO.phone}</span>
@@ -126,11 +114,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled
-                ? 'text-dark hover:bg-light'
-                : 'text-white hover:bg-white/10'
-            }`}
+            className="lg:hidden p-2 rounded-lg text-dark hover:bg-light transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />

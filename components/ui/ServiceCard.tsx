@@ -38,7 +38,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 border border-light-darker"
+      className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 border border-light-darker h-full flex flex-col"
     >
       <div className="flex items-center mb-6">
         <div className="bg-primary/10 p-4 rounded-xl mr-4">
@@ -49,7 +49,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
       <p className="text-dark-lighter mb-6 text-lg">{description}</p>
 
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start">
             <Icons.Check className="w-5 h-5 text-accent mr-2 mt-1 flex-shrink-0" />
@@ -61,7 +61,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       <Button
         onClick={handleContactClick}
         variant="primary"
-        className="w-full"
+        className="w-full mt-auto"
         size="md"
       >
         <Icons.MessageCircle className="w-5 h-5 mr-2" />
