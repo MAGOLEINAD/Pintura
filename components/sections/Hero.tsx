@@ -18,7 +18,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden bg-gradient-to-br from-light via-white to-light-dark"
+      className="relative min-h-screen flex items-center pt-28 pb-12 overflow-hidden bg-gradient-to-br from-light via-white to-light-dark"
     >
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>

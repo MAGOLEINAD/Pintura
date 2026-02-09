@@ -25,6 +25,23 @@ export const Navbar: React.FC = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navbarHeight = 80; // Aproximadamente la altura del navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   const navLinks = [
     { href: '#inicio', label: 'Inicio' },
     { href: '#nosotros', label: 'Nosotros' },
@@ -46,6 +63,7 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <motion.a
             href="#inicio"
+            onClick={(e) => handleNavClick(e, '#inicio')}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center space-x-3 group"
@@ -81,6 +99,7 @@ export const Navbar: React.FC = () => {
               <motion.a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -139,7 +158,7 @@ export const Navbar: React.FC = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="block py-2 text-dark-light hover:text-primary font-medium transition-colors"
                 >
                   {link.label}
