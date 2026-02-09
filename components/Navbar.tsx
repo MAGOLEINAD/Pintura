@@ -27,19 +27,33 @@ export const Navbar: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const navbarHeight = 80; // Aproximadamente la altura del navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+    e.stopPropagation();
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setIsMobileMenuOpen(false);
-    }
+    // Cerrar el menú móvil primero
+    setIsMobileMenuOpen(false);
+
+    // Pequeño delay para que la animación del menú termine
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        // Intentar con smooth scroll primero
+        try {
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        } catch (error) {
+          // Fallback para navegadores que no soportan smooth scroll
+          window.scrollTo(0, offsetPosition);
+        }
+      }
+    }, 300);
   };
 
   const navLinks = [
@@ -133,7 +147,8 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-dark hover:bg-light transition-colors"
+            className="lg:hidden p-2 rounded-lg text-dark hover:bg-light transition-colors touch-manipulation active:scale-95"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -151,7 +166,8 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white shadow-xl"
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-white shadow-xl border-t border-light-darker"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -159,7 +175,7 @@ export const Navbar: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="block py-2 text-dark-light hover:text-primary font-medium transition-colors"
+                  className="block py-3 text-dark-light hover:text-primary font-medium transition-colors touch-manipulation active:text-primary"
                 >
                   {link.label}
                 </a>
@@ -167,7 +183,7 @@ export const Navbar: React.FC = () => {
               <div className="pt-4 border-t border-light-darker space-y-3">
                 <a
                   href={`tel:${BUSINESS_INFO.phone}`}
-                  className="flex items-center space-x-2 text-dark-light hover:text-primary"
+                  className="flex items-center space-x-2 text-dark-light hover:text-primary touch-manipulation py-2"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{BUSINESS_INFO.phone}</span>
@@ -176,7 +192,7 @@ export const Navbar: React.FC = () => {
                   onClick={handleWhatsAppClick}
                   variant="secondary"
                   size="md"
-                  className="w-full"
+                  className="w-full touch-manipulation"
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Presupuesto Gratis
